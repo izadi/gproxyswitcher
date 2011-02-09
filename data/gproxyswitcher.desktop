@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Name=GNOME Proxy Switcher
+Comment=Network Proxy Switcher for GNOME
+Exec=gproxyswitcher
+Icon=gproxyswitcher
+Terminal=false
+Type=Application
+Categories=GNOME;Settings;X-GNOME-NetworkSettings;
+OnlyShowIn=GNOME;
