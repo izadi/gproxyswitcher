@@ -22,43 +22,20 @@ public class GProxySwitcher.Main
 	{
 		try
 		{
-			string oaf_activate_iid = null;
-			var entry_oaf_activate_iid = GLib.OptionEntry();
-			entry_oaf_activate_iid.long_name = "oaf-activate-iid";
-			entry_oaf_activate_iid.arg = GLib.OptionArg.STRING;
-			entry_oaf_activate_iid.arg_data = &oaf_activate_iid;
-			entry_oaf_activate_iid.flags = GLib.OptionFlags.HIDDEN;
-
-			int oaf_ior_fd = -1;
-			var entry_oaf_ior_fd = GLib.OptionEntry();
-			entry_oaf_ior_fd.long_name = "oaf-ior-fd";
-			entry_oaf_ior_fd.arg = GLib.OptionArg.INT;
-			entry_oaf_ior_fd.arg_data = &oaf_ior_fd;
-			entry_oaf_ior_fd.flags = GLib.OptionFlags.HIDDEN;
-			
 			var options = new GLib.OptionContext(" - GNOME Proxy Switcher");
 			options.set_summary(Config.default.summary);
 			options.set_help_enabled(true);
-			options.add_main_entries({ entry_oaf_activate_iid, entry_oaf_ior_fd }, null);
+			options.add_main_entries({}, null);
 			options.add_group(Gtk.get_option_group(true));
 							
 			if (!options.parse(ref args))
 				return 1;
 
-			if (oaf_activate_iid != null)
-			{
-				stdout.printf("Running in applet mode...\n");
-				Gnome.Program.init("GProxySwitcher_Applet", "0.1", Gnome.libgnomeui_module, args, "sm-connect", false);
-				return Panel.Applet.factory_main(oaf_activate_iid, typeof(Applet), Applet.factory);
-			}
-			else
-			{
-				stdout.printf("Running in tray mode...\n");
-				var tray = new Tray();
-				tray.visible = true;
-				Gtk.main();
-				return 0;
-			}
+			stdout.printf("Running in tray mode...\n");
+			var tray = new Tray();
+			tray.visible = true;
+			Gtk.main();
+			return 0;
 		}
 		catch (OptionError e)
 		{

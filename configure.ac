@@ -1,4 +1,4 @@
-AC_INIT([GNOME Proxy Switcher], [0.3.0], [m.izadi@gmail.com], [gproxyswitcher])
+AC_INIT([GNOME Proxy Switcher], [0.4.0], [m.izadi@gmail.com], [gproxyswitcher])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -43,7 +43,6 @@ PKG_CHECK_MODULES(GPROXYSWITCHER,
 	gobject-2.0 >= $GLIB_REQUIRED
 	gtk+-2.0 >= $GTK_REQUIRED
 	gconf-2.0
-	libpanelapplet-2.0
 	libgnomeui-2.0)
 AC_SUBST(GPROXYSWITCHER_CFLAGS)
 AC_SUBST(GPROXYSWITCHER_LIBS)
